@@ -12,9 +12,17 @@ var cafeList = map[string][]string{
 	"tula":   []string{"Пир и мир", "Красиво есть не запретишь", "Поздний завтрак"},
 }
 
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
 func mainHandle(w http.ResponseWriter, req *http.Request) {
 	var err error
 
+	// если count не указан, то возвращается 25 записей
 	count := 25
 	countStr := req.FormValue("count")
 	if countStr != "" {
